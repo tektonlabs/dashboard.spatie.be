@@ -1,7 +1,7 @@
 <template>
     <tile :position="position" modifiers="overflow">
         <section class="help">
-            <h1 class="help__title">HELP! LAST UPDATED</h1>
+            <h1 class="help__title">HELP! LAST UPDATES</h1>
             <ul class="help__documents">
                 <li v-for="documentItem in documents" class="help__documents">
                     <h2 class="help__title">{{ documentItem.title }}</h2>

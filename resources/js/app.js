@@ -5,6 +5,7 @@ import Vue from 'vue';
 
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
+import Ontime from './components/Ontime';
 import Help from './components/Help';
 import Moody from './components/Moody';
 import Github from './components/Github';
@@ -23,6 +24,7 @@ new Vue({
     components: {
         Dashboard,
         Calendar,
+        Ontime,
         Help,
         Moody,
         Github,

@@ -22,8 +22,9 @@
     <time-weather position="c1:c3" date-format="ddd DD/MM" time-zone="America/Mexico_City" weather-city="Mexico City"></time-weather>
     <time-weather position="d1:d3" date-format="ddd DD/MM" time-zone="America/New_York" weather-city="Charlotte"></time-weather>
     <time-weather position="e1:e3" date-format="ddd DD/MM" time-zone="America/Toronto" weather-city="Toronto"></time-weather>
-    <calendar calendar-summary="Ontime" position="e4:e12"></calendar>
-    <calendar calendar-summary="TK Birthdays" position="d4:d12"></calendar>
+    <ontime position="d4:d12"></ontime>
+    <calendar calendar-summary="TK Birthdays" position="e4:e7"></calendar>
+    <calendar calendar-summary="TK Events" position="e8:e12"></calendar>
     <internet-connection></internet-connection>
 </dashboard>
 

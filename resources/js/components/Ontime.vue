@@ -3,10 +3,10 @@
         <section class="calendar">
             <h1 class="calendar__title">{{ calendarName }}</h1>
             <ul class="calendar__events">
-                <li v-for="event in calendarEvents.events" class="calendar__event">
-                    <h2 class="calendar__date">{{ niceFormat(event.date) }}</h2>
+                <li v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" class="calendar__event">
+                    <h2 class="calendar__event__title">{{ event.name }}</h2>
                     <ul class="calendar__event__attendees">
-                        <li>{{ event.name }}</li>
+                        <li v-for="attendee in event.attendees">{{ attendee.name }}</li>
                     </ul>
                 </li>
             </ul>
@@ -18,7 +18,7 @@
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
-import { niceFormat } from '../helpers';
+import { relativeDate } from '../helpers';
 
 export default {
     components: {
@@ -27,30 +27,32 @@ export default {
 
     mixins: [echo, saveState],
 
-    props: ['position', 'calendarSummary'],
+    props: ['position'],
 
     data() {
         return {
             calendarName: "",
             calendarEvents: [],
+            attendees: [],
         };
     },
 
     methods: {
-        niceFormat,
+        relativeDate,
 
         getEventHandlers() {
             return {
                 'Calendar.EventsFetched': response => {
-                    this.calendarName = response.calendarEvents[this.calendarSummary].calendarName;
-                    this.calendarEvents = response.calendarEvents[this.calendarSummary];
+                    this.attendees = response.calendarEvents['Ontime'].attendees;
+                    this.calendarName = response.calendarEvents['Ontime'].calendarName;
+                    this.calendarEvents = response.calendarEvents['Ontime'];
                 },
             };
         },
 
         getSaveStateConfig() {
             return {
-                cacheKey: 'calendar',
+                cacheKey: 'ontime',
             };
         },
     },
