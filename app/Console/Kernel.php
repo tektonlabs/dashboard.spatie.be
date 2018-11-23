@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Components\Twitter\SendFakeTweet::class,
         \App\Console\Components\Help\FetchLastUpdatedDocuments::class,
         \App\Console\Components\Moody\FetchLastUpdatedRecords::class,
+        \App\Console\Components\Timezone\FetchTimezones::class,
         UpdateDashboard::class,
     ];
 
@@ -33,6 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('dashboard:fetch-last-documents')->everyMinute();
         $schedule->command('dashboard:send-heartbeat')->everyMinute();
         $schedule->command('dashboard:update-moody')->everyMinute();
+        $schedule->command('dashboard:fetch-timezones')->daily();
         // $schedule->command('dashboard:fetch-current-track')->everyMinute();
         // $schedule->command('dashboard:fetch-tasks')->everyFiveMinutes();
         // $schedule->command('dashboard:fetch-github-totals')->everyThirtyMinutes();

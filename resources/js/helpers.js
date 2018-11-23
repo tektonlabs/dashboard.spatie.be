@@ -105,3 +105,11 @@ function indexInAlphabet(character) {
     const index = character.toLowerCase().charCodeAt(0) - 96;
     return index < 1 ? 1 : index;
 }
+
+export function formatDateByTimezone(timezone, dateFormat) {
+    return moment.tz(timezone).format(dateFormat);
+}
+
+export function formatTimeByTimezone(timezone, timeFormat) {
+    return moment.tz(timezone).format(timeFormat);
+}

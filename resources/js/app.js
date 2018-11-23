@@ -15,6 +15,7 @@ import Npm from './components/Npm';
 import Packagist from './components/Packagist';
 import Tasks from './components/Tasks';
 import TimeWeather from './components/TimeWeather';
+import TimeZone from './components/TimeZone';
 import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
 
@@ -34,6 +35,7 @@ new Vue({
         Packagist,
         Tasks,
         TimeWeather,
+        TimeZone,
         Twitter,
         Uptime,
     },

@@ -8,8 +8,10 @@
 
 .calendar__title {
     color: var(--blue-dark);
+    font-size: var(--font-size-m);
 }
 
 .calendar__event__attendees {
     color: var(--blue-dark);
+    font-size: var(--font-size-xxs);
 }
