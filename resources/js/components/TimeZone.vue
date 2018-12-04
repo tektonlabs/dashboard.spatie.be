@@ -1,11 +1,16 @@
 <template>
     <tile :position="position" modifiers="overflow">
-        <section class="time-zone" v-for="city in cities">
-            <div class="time-zone__time-zone">{{ city.name }}</div>
-            <time class="time-zone__content">
-                <span class="time-zone__date">{{ formatDateByTimezone(city.timezone, dateFormat) }}</span> -
-                <span class="time-zone__time">{{ formatTimeByTimezone(city.timezone, timeFormat)  }}</span>
-            </time>
+        <section>
+            <h1 class="timezone__title">World Clock</h1>
+            <ul class="time-zone" v-for="city in cities">
+                <li class="time-zone__time-zone">
+                <div>{{ city.name }}</div>
+                <time class="time-zone__content">
+                    <span class="time-zone__date">{{ formatDateByTimezone(city.timezone, dateFormat) }}</span> -
+                    <span class="time-zone__time">{{ formatTimeByTimezone(city.timezone, timeFormat)  }}</span>
+                </time>
+                </li>
+            </ul>
         </section>
     </tile>
 </template>

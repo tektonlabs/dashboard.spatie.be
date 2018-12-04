@@ -2,14 +2,15 @@
     <tile :position="position" modifiers="overflow">
         <section class="calendar">
             <h1 class="calendar__title">{{ calendarName }}</h1>
-            <ul class="calendar__events">
-                <li v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" class="calendar__event">
-                    <h2 class="calendar__event__title">{{ event.name }}</h2>
+            <div class="calendar__events" v-if="isCalendarEmpty == false">
+                <div v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" class="calendar__event" >
+                    <div class="calendar__event__title">{{ event.name }}</div>
                     <ul class="calendar__event__attendees">
                         <li v-for="attendee in event.attendees">{{ attendee.name }}</li>
                     </ul>
-                </li>
-            </ul>
+                </div>
+            </div>
+            <div v-if="isCalendarEmpty == true">No hay registros para hoy</div>
         </section>
     </tile>
 </template>
@@ -55,6 +56,11 @@ export default {
                 cacheKey: 'ontime',
             };
         },
+    },
+    computed: {
+        isCalendarEmpty: function() {
+            return  Object.keys(this.calendarEvents.events).length ? false : true;
+        }
     },
 };
 </script>

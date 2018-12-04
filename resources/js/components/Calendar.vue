@@ -2,7 +2,7 @@
     <tile :position="position" modifiers="overflow">
         <section class="calendar">
             <h1 class="calendar__title">{{ calendarName }}</h1>
-            <ul class="calendar__events">
+            <ul class="calendar__events" v-if="isCalendarEmpty == false">
                 <li v-for="event in calendarEvents.events" class="calendar__event">
                     <h2 class="calendar__date">{{ niceFormat(event.date) }}</h2>
                     <ul class="calendar__event__attendees">
@@ -10,6 +10,7 @@
                     </ul>
                 </li>
             </ul>
+            <div v-if="isCalendarEmpty == true">No hay registros para hoy</div>
         </section>
     </tile>
 </template>
@@ -32,7 +33,7 @@ export default {
     data() {
         return {
             calendarName: "",
-            calendarEvents: [],
+            calendarEvents: null,
         };
     },
 
@@ -53,6 +54,11 @@ export default {
                 cacheKey: 'calendar',
             };
         },
+    },
+    computed: {
+        isCalendarEmpty: function() {
+            return Object.keys(this.calendarEvents.events).length ? false:true;
+        }
     },
 };
 </script>

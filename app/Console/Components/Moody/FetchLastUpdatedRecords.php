@@ -28,7 +28,7 @@ class FetchLastUpdatedRecords extends Command
      */
     public function handle()
     {
-        $url = 'http://moody.dev.andromeda.tektonlabs.com/admin/';
+        $url = env('MOODY_URL');
         event(new LastUpdatedRecords($url));
     }
 }

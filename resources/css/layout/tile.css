@@ -3,12 +3,12 @@
     padding: var(--grid-padding);
     border-radius: 0.25vw;
     background-color: var(--tile-background-color);
-    color: var(--blue-dark);
+    color: var(--gray-dark);
     text-shadow: 1px 1px 1px var(--tile-background-color);
+}
 
-    h1 {
-        color: var(--blue-dark);
-    }
+.tile h1 {
+    color: var(--yellow-dark);
 }
 
 .tile--overflow:after {

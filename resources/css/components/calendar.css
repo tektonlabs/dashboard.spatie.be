@@ -7,11 +7,19 @@
 }
 
 .calendar__title {
-    color: var(--blue-dark);
     font-size: var(--font-size-m);
 }
 
+.calendar__event__title {
+    font-weight: var(--font-weight-bold);
+}
+
 .calendar__event__attendees {
-    color: var(--blue-dark);
+    color: var(--gray-dark);
     font-size: var(--font-size-xxs);
+    list-style: square;
+}
+
+.calendar__event__attendees li {
+    margin-left: 15px;
 }
