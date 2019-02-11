@@ -3,21 +3,21 @@ import './bootstrap.js';
 import Echo from 'laravel-echo';
 import Vue from 'vue';
 
-import Dashboard from './components/Dashboard';
-import Calendar from './components/Calendar';
 import Ontime from './components/Ontime';
 import Help from './components/Help';
 import Moody from './components/Moody';
-import Github from './components/Github';
+import Dashboard from './components/Dashboard';
+import Calendar from './components/Calendar';
+import Statistics from './components/Statistics';
 import InternetConnection from './components/InternetConnection';
-import Music from './components/Music';
-import Npm from './components/Npm';
-import Packagist from './components/Packagist';
-import Tasks from './components/Tasks';
+import TeamMember from './components/TeamMember';
 import TimeWeather from './components/TimeWeather';
 import TimeZone from './components/TimeZone';
+import Trains from './components/Trains';
 import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
+import Velo from './components/Velo';
+import TileTimer from './components/TileTimer';
 
 new Vue({
     el: '#dashboard',
@@ -28,32 +28,32 @@ new Vue({
         Ontime,
         Help,
         Moody,
-        Github,
+        Statistics,
         InternetConnection,
-        Music,
-        Npm,
-        Packagist,
-        Tasks,
+        TeamMember,
         TimeWeather,
         TimeZone,
+        Trains,
         Twitter,
         Uptime,
+        Velo,
+        TileTimer,
     },
 
     created() {
-        let options = {
+        let config = {
             broadcaster: 'pusher',
             key: window.dashboard.pusherKey,
-            cluster: window.dashboard.pusherCluster,
-        };
-
-        if (window.dashboard.usingNodeServer) {
-            options = {
-                broadcaster: 'socket.io',
-                host: 'http://dashboard.spatie.be:6001',
-            };
+            wsHost: window.location.hostname,
+            wsPath: window.dashboard.clientConnectionPath,
+            wsPort: window.dashboard.wsPort,
+            disableStats: true,
         }
 
-        this.echo = new Echo(options);
+        if (window.dashboard.environment === 'local') {
+            config.wsPort = 6001;
+        }
+
+        this.echo = new Echo(config);
     },
 });
