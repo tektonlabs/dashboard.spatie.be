@@ -1,8 +1,8 @@
 <template>
     <tile :position="position">
-        <section class="moody__cover">
+        <div class="grid gap-padding h-full">
             <iframe :src="url?url:src" width="100%" height="100%" frameBorder="0"></iframe>
-        </section>
+        </div>
     </tile>
 </template>
 

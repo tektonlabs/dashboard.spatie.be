@@ -1,19 +1,19 @@
 <template>
 
     <tile :position="position">
-        <section class="grid gap-padding h-full markup">
+        <div class="">
             <h1 class="calendar__title">{{ calendarName }}</h1>
             <ul class="align-self-center" v-if="isCalendarEmpty == false">
                 <li v-for="event in calendarEvents.events" class="calendar__event">
                     <h2 class="calendar__date">{{ niceFormat(event.date) }}</h2>
                     <div class="text-sm text-dimmed">{{ relativeDate(event.date) }}</div>
-                    <ul class="calendar__event__attendees">
+                    <ul class="align-self-center">
                         <li><div :class="{ 'font-bold': withinWeek(event.date) }">{{ event.name }}</div></li>
                     </ul>
                 </li>
             </ul>
             <div v-if="isCalendarEmpty == true">No hay registros para hoy</div>
-        </section>
+        </div>
     </tile>
 </template>
 

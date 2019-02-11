@@ -1,17 +1,17 @@
 <template>
     <tile :position="position" modifiers="overflow">
-        <section class="calendar">
+        <div class="">
             <h1 class="calendar__title">{{ calendarName }}</h1>
-            <div class="calendar__events" v-if="isCalendarEmpty == false">
+            <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == false">
                 <div v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" class="calendar__event" >
-                    <div class="calendar__event__title">{{ event.name }}</div>
-                    <ul class="calendar__event__attendees">
-                        <li v-for="attendee in event.attendees">{{ attendee.name }}</li>
+                    <div class="font-bold">{{ event.name }}</div>
+                    <ul class="align-self-center">
+                        <li class="text-sm text-dimmed" v-for="attendee in event.attendees">{{ attendee.name }}</li>
                     </ul>
                 </div>
             </div>
-            <div v-if="isCalendarEmpty == true">No hay registros para hoy</div>
-        </section>
+            <div class="text-sm text-dimmed" v-if="isCalendarEmpty == true">No hay registros para hoy</div>
+        </div>
     </tile>
 </template>
 

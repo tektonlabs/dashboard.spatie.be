@@ -7,7 +7,7 @@
             <div class="markup">
                 <h1>{{ date }}</h1>
             </div>
-            <div class="align-self-center font-bold text-4xl tracking-wide leading-none">
+            <div class="align-self-center font-bold text-5xl tracking-wide leading-none">
                 {{ time }}
             </div>
             <div class="uppercase">
@@ -18,10 +18,6 @@
                     <span>
                         {{ weather.temperature }}°
                         <span class="text-sm uppercase text-dimmed">out</span>
-                    </span>
-                    <span>
-                        <office-temperature />
-                        <span class="text-sm uppercase text-dimmed">in</span>
                     </span>
                     <span v-for="icon in weather.icons" class="text-2xl" v-html="icon"></span>
                 </div>

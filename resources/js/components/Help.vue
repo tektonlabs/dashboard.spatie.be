@@ -1,14 +1,14 @@
 <template>
     <tile :position="position" modifiers="overflow">
-        <section class="help">
-            <h1 class="help__header">HELP, Last updates</h1>
-            <ul class="help__documents">
+        <div class="">
+            <h1 class="">HELP, Last updates</h1>
+            <ul class="align-self-center">
                 <li v-for="documentItem in documents" class="help__documents">
-                    <h2 class="help__title">{{ documentItem.title }}</h2>
-                    <div class="help__description">{{documentItem.description}}</div>
+                    <h2 class="font-bold">{{ documentItem.title }}</h2>
+                    <div class="text-sm text-dimmed">{{documentItem.description}}</div>
                 </li>
             </ul>
-        </section>
+        </div>
     </tile>
 </template>
 
