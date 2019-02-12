@@ -2,7 +2,7 @@
 
     <tile :position="position">
         <div class="">
-            <h1 class="calendar__title">{{ calendarName }}</h1>
+            <h1 class="text-2xl">{{ calendarName }}</h1>
             <ul class="align-self-center" v-if="isCalendarEmpty == false">
                 <li v-for="event in calendarEvents.events" class="calendar__event">
                     <h2 class="calendar__date">{{ niceFormat(event.date) }}</h2>

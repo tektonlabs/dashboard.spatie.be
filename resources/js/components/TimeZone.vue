@@ -1,7 +1,7 @@
 <template>
     <tile :position="position" modifiers="overflow">
         <div class="">
-            <h1 class="">World Clock</h1>
+            <h1 class="text-2xl">World Clock</h1>
             <ul class="align-self-center" v-for="city in cities">
                 <li class="text-sm text-dimmed">
                     <div class="font-bold">{{ city.name }}</div>

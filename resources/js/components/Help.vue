@@ -1,7 +1,7 @@
 <template>
     <tile :position="position" modifiers="overflow">
         <div class="">
-            <h1 class="">HELP, Last updates</h1>
+            <h1 class="text-2xl">HELP, Last updates</h1>
             <ul class="align-self-center">
                 <li v-for="documentItem in documents" class="help__documents">
                     <h2 class="font-bold">{{ documentItem.title }}</h2>

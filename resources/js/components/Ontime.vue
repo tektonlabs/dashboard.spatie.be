@@ -1,7 +1,7 @@
 <template>
     <tile :position="position" modifiers="overflow">
         <div class="">
-            <h1 class="calendar__title">{{ calendarName }}</h1>
+            <h1 class="text-2xl">{{ calendarName }}</h1>
             <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == false">
                 <div v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" class="calendar__event" >
                     <div class="font-bold">{{ event.name }}</div>
