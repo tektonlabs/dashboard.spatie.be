@@ -65,7 +65,7 @@ export default {
     },
     computed: {
         isCalendarEmpty: function() {
-            return Object.keys(this.calendarEvents.events).length ? false:true;
+            return (this.calendarEvents != null) ? (Object.keys(this.calendarEvents.events).length ? false : true) : true;
         }
     },
 };

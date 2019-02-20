@@ -15,14 +15,8 @@ class UpdateDashboardCommand extends Command
         $this->call('dashboard:send-heartbeat');
         $this->call('dashboard:determine-appearance');
         $this->call('dashboard:fetch-calendar-events');
+        $this->call('dashboard:fetch-timezones');
         $this->call('dashboard:fetch-last-documents');
         $this->call('dashboard:update-moody');
-        // $this->call('dashboard:fetch-train-connections');
-        // $this->call('dashboard:fetch-current-tracks');
-        // $this->call('dashboard:fetch-velo-stations');
-        // $this->call('dashboard:fetch-tasks');
-        // $this->call('dashboard:fetch-team-member-status');
-        // $this->call('dashboard:fetch-github-totals');
-        // $this->call('dashboard:fetch-packagist-totals');
     }
 }

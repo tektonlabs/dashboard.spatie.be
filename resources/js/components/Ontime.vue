@@ -63,7 +63,7 @@ export default {
     },
     computed: {
         isCalendarEmpty: function() {
-            return  Object.keys(this.calendarEvents.events).length ? false : true;
+            return (this.calendarEvents.length != 0) ? (Object.keys(this.calendarEvents.events).length ? false : true) : true;
         }
     },
 };

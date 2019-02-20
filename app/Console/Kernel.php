@@ -6,6 +6,7 @@ use App\Console\Components\Buienradar\FetchBuienradarForecastsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Console\Components\Moody\FetchLastUpdatedRecords;
 use App\Console\Components\Help\FetchLastUpdatedDocuments;
+use App\Console\Components\Timezone\FetchTimezones;
 use App\Console\Components\Trains\FetchTrainsCommand;
 use App\Console\Components\Velo\FetchVeloStationsCommand;
 use App\Console\Components\TeamMember\FetchTasksCommand;
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
         $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
+        $schedule->command(FetchTimezones::class)->everyMinute();
         $schedule->command('websockets:clean')->daily();
     }
 
