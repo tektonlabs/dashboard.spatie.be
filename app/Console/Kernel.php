@@ -30,14 +30,6 @@ class Kernel extends ConsoleKernel
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
         $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
         $schedule->command('websockets:clean')->daily();
-        // $schedule->command(FetchCurrentTracksCommand::class)->everyMinute();
-        // $schedule->command(FetchVeloStationsCommand::class)->everyMinute();
-        // $schedule->command(FetchTasksCommand::class)->everyFiveMinutes();
-        // $schedule->command(FetchTrainsCommand::class)->everyMinute();
-        // $schedule->command(FetchStatusCommand::class)->everyFiveMinutes();
-        // $schedule->command(FetchGitHubTotalsCommand::class)->everyThirtyMinutes();
-        // $schedule->command(FetchPackagistTotalsCommand::class)->hourly();
-
     }
 
     public function commands()

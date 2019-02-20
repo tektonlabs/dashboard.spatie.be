@@ -1,8 +1,5 @@
 @setup
 $projectDir = "/var/www/dashboard";
-$branch = $branch ?? 'dev';
-$dirName = $branch == 'dev' ? 'stage' : 'prod';
-$repoDirName = "{$projectDir}/{$dirName}";
 function logMessage($message) {
     return "echo '\033[32m" .$message. "\033[0m';\n";
 }
@@ -32,31 +29,31 @@ finishDeploy
 
 @task('git')
 {{ logMessage("🏃  Starting deployment...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 git pull origin {{ $branch }}
 @endtask
 
 @task('runComposer')
 {{ logMessage("🛠  Running composer...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 composer install --no-dev --ignore-platform-reqs --prefer-dist --no-scripts -q -o;
 @endtask
 
 @task('runMigrations')
 {{ logMessage("🥦  Running migrations...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 php artisan migrate --force;
 @endtask
 
 @task('runFreshMigrations')
 {{ logMessage("🥦  Running fresh migrations...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 php artisan migrate:fresh --force --seed;
 @endtask
 
 @task('cleanCache')
 {{ logMessage("✨  Cleaning cache...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 php artisan clear-compiled;
 php artisan config:clear
 php artisan cache:clear
@@ -66,7 +63,7 @@ php artisan view:cache
 
 @task('runYarn')
 {{ logMessage("📦  Running Yarn...") }}
-cd {{ $repoDirName }}
+cd {{ $projectDir }}
 yarn config set ignore-engines true
 yarn --frozen-lockfile
 yarn prod
@@ -74,7 +71,7 @@ yarn prod
 
 @task('generateAssets')
 {{ logMessage("🌅  Generating assets...") }}
-cd {{ $repoDirName }};
+cd {{ $projectDir }};
 yarn run production --progress false
 @endtask
 
