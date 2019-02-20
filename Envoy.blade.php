@@ -66,7 +66,7 @@ php artisan view:cache
 cd {{ $projectDir }}
 yarn config set ignore-engines true
 yarn --frozen-lockfile
-yarn prod
+yarn production
 @endtask
 
 @task('generateAssets')
