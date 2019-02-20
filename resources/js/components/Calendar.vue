@@ -2,17 +2,21 @@
 
     <tile :position="position">
         <div class="">
-            <h1 class="text-2xl">{{ calendarName }}</h1>
+            <h1 class="text-2xl">{{ calendarTitle }}</h1>
             <ul class="align-self-center" v-if="isCalendarEmpty == false">
-                <li v-for="event in calendarEvents.events" class="calendar__event">
-                    <h2 class="calendar__date">{{ niceFormat(event.date) }}</h2>
+                <li v-for="event in calendarEvents.events">
+                    <h2>{{ niceFormat(event.date) }}</h2>
                     <div class="text-sm text-dimmed">{{ relativeDate(event.date) }}</div>
                     <ul class="align-self-center">
                         <li><div :class="{ 'font-bold': withinWeek(event.date) }">{{ event.name }}</div></li>
                     </ul>
                 </li>
             </ul>
-            <div v-if="isCalendarEmpty == true">No hay registros para hoy</div>
+            <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == true">
+                <ul class="align-self-center">
+                    <li class="text-sm text-dimmed">No se han encontrado registros</li>
+                </ul>
+            </div>
         </div>
     </tile>
 </template>
@@ -30,7 +34,7 @@ export default {
 
     mixins: [echo, saveState],
 
-    props: ['position', 'calendarSummary'],
+    props: ['position', 'calendarSummary', 'calendarTitle'],
 
     data() {
         return {

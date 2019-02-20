@@ -28,7 +28,7 @@ export function withinWeek(value) {
 }
 
 export function niceFormat(date) {
-    return moment(date).format('dddd Do');
+    return moment(date).format('MMM Do');
 }
 
 export function relativeDate(value) {

@@ -27,7 +27,7 @@ class FetchCalendarEventsCommand extends Command
         $endDate = $now->endOfWeek();
 
         $queryParameters = [
-            'maxResults' => 10,
+            'maxResults' => 15,
             'singleEvents' => 'true',
         ];
 

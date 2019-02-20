@@ -4,10 +4,10 @@
             class="grid gap-2 justify-items-center h-full"
             style="grid-template-rows: auto 1fr auto;"
         >
-            <div class="markup">
-                <h1>{{ date }}</h1>
+            <div class="text-dimmed uppercase">
+                <h1 class="text-xl">{{ date }}</h1>
             </div>
-            <div class="align-self-center font-bold text-5xl tracking-wide leading-none">
+            <div class="align-self-center font-bold text-5xl tracking-wide">
                 {{ time }}
             </div>
             <div class="uppercase">

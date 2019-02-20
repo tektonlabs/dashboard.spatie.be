@@ -13,10 +13,10 @@ class DetermineAppearanceCommand extends Command
     protected $description = 'Determine the looks of the dashboard';
 
     /** @var float */
-    protected $antwerpLat = 51.260197;
+    protected $limaLat = -12.0464;
 
     /** @var float */
-    protected $antwerpLng = 4.402771;
+    protected $limaLng = -77.0428;
 
     public function handle()
     {
@@ -36,16 +36,16 @@ class DetermineAppearanceCommand extends Command
         $sunriseTimestamp = date_sunrise(
             now()->timestamp,
             SUNFUNCS_RET_TIMESTAMP,
-            $this->antwerpLat,
-            $this->antwerpLng
+            $this->limaLat,
+            $this->limaLng
         );
         $sunrise = Carbon::createFromTimestamp($sunriseTimestamp);
 
         $sunsetTimestamp = date_sunset(
             now()->timestamp,
             SUNFUNCS_RET_TIMESTAMP,
-            $this->antwerpLat,
-            $this->antwerpLng
+            $this->limaLat,
+            $this->limaLng
         );
         $sunset = Carbon::createFromTimestamp($sunsetTimestamp);
 
