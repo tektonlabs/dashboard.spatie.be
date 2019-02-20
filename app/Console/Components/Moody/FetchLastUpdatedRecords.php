@@ -28,7 +28,7 @@ class FetchLastUpdatedRecords extends Command
      */
     public function handle()
     {
-        $url = config('app.moody.url');
+        $url = config('moody.url');
         event(new LastUpdatedRecords($url));
     }
 }
