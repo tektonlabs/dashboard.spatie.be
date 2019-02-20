@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(FetchLastUpdatedRecords::class)->everyMinute();
-        $schedule->command(FetchLastUpdatedDocuments::class)->everyMinute();
-        $schedule->command(FetchCalendarEventsCommand::class)->everyMinute();
+        $schedule->command(FetchLastUpdatedDocuments::class)->hourly();
+        $schedule->command(FetchCalendarEventsCommand::class)->daily();
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
         $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
