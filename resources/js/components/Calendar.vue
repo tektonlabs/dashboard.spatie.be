@@ -1,16 +1,23 @@
 <template>
-    <tile :position="position" modifiers="overflow">
-        <section class="calendar">
-            <h1 class="calendar__title">{{ calendarName }}</h1>
-            <ul class="calendar__events">
-                <li v-for="event in calendarEvents.events" class="calendar__event">
-                    <h2 class="calendar__event__title">{{ event.name }}</h2>
-                    <ul class="calendar__event__attendees">
-                        <li v-for="attendee in event.attendees">{{ attendee.name }}</li>
+
+    <tile :position="position">
+        <div class="">
+            <h1 class="text-2xl">{{ calendarTitle }}</h1>
+            <ul class="align-self-center" v-if="isCalendarEmpty == false">
+                <li v-for="event in calendarEvents.events">
+                    <h2>{{ niceFormat(event.date) }}</h2>
+                    <div class="text-sm text-dimmed">{{ relativeDate(event.date) }}</div>
+                    <ul class="align-self-center">
+                        <li><div :class="{ 'font-bold': withinWeek(event.date) }">{{ event.name }}</div></li>
                     </ul>
                 </li>
             </ul>
-        </section>
+            <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == true">
+                <ul class="align-self-center">
+                    <li class="text-sm text-dimmed">No records found</li>
+                </ul>
+            </div>
+        </div>
     </tile>
 </template>
 
@@ -18,7 +25,7 @@
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
-import { relativeDate } from '../helpers';
+import { niceFormat, relativeDate, withinWeek } from '../helpers';
 
 export default {
     components: {
@@ -27,23 +34,23 @@ export default {
 
     mixins: [echo, saveState],
 
-    props: ['position', 'calendarSummary'],
+    props: ['position', 'calendarSummary', 'calendarTitle'],
 
     data() {
         return {
             calendarName: "",
-            calendarEvents: [],
-            attendees: [],
+            calendarEvents: null,
         };
     },
 
     methods: {
+        niceFormat,
         relativeDate,
+        withinWeek,
 
         getEventHandlers() {
             return {
                 'Calendar.EventsFetched': response => {
-                    this.attendees = response.calendarEvents[this.calendarSummary].attendees;
                     this.calendarName = response.calendarEvents[this.calendarSummary].calendarName;
                     this.calendarEvents = response.calendarEvents[this.calendarSummary];
                 },
@@ -55,6 +62,11 @@ export default {
                 cacheKey: 'calendar',
             };
         },
+    },
+    computed: {
+        isCalendarEmpty: function() {
+            return Object.keys(this.calendarEvents.events).length ? false:true;
+        }
     },
 };
 </script>

@@ -1,19 +1,26 @@
 <template>
-    <section v-if="offline" class="internet-connection">
-        <div class="internet-connection__alert">
-            <span class="internet-connection__icon h-icon"></span>
-            <span class="internet-connection__text">Internet connection</span>
+    <tile :position="position" class="z-10" style="--bg-tile: transparent" no-fade>
+        <div v-if="offline" class="flex">
+            <div class="px-2 mx-auto font-black text-invers bg-error rounded-full shadow-lg">
+                No connection
+            </div>
         </div>
-    </section>
+    </tile>
 </template>
 
 <script>
 import echo from '../mixins/echo';
-import { addClassModifiers } from '../helpers';
 import moment from 'moment';
+import Tile from './atoms/Tile';
 
 export default {
+    components: {
+        Tile,
+    },
+
     mixins: [echo],
+
+    props: ['position'],
 
     data() {
         return {
@@ -27,8 +34,6 @@ export default {
     },
 
     methods: {
-        addClassModifiers,
-
         determineConnectionStatus() {
             const lastHeartBeatReceivedSecondsAgo = moment().diff(
                 this.lastHeartBeatReceivedAt,
@@ -40,7 +45,7 @@ export default {
 
         getEventHandlers() {
             return {
-                'InternetConnection.Heartbeat': () => {
+                'Dashboard.Heartbeat': () => {
                     this.lastHeartBeatReceivedAt = moment();
                 },
             };

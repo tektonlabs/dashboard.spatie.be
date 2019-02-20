@@ -1,48 +1,59 @@
 <template>
-    <tile :position="position" modifiers="overflow transparent">
-        <section class="tweets">
-            <div class="tweet" v-for="tweet in onDisplay">
-                <div class="tweet__header">
-                    <div class="tweet__avatar"
-                    :style="'background-image: url('+ tweet.authorAvatar +')'"></div>
-                    <div class="tweet__user">
-                        <div class="tweet__user__name h-ellipsis" v-html="tweet.authorName"></div>
-                        <div class="tweet__user__handle h-ellipsis">
-                            {{ tweet.authorScreenName }}
+    <tile :position="position">
+        <ul class="grid" style="grid-auto-rows: auto;">
+            <li
+                class="overflow-hidden pb-4 mb-4 border-b-2 border-screen"
+                v-for="tweet in onDisplay"
+            >
+                <div class="markup grid gap-padding" style="grid-auto-rows: auto">
+                    <div
+                        class="grid gap-2 items-center w-full"
+                        style="grid-template-columns: auto 1fr"
+                    >
+                        <avatar :src="tweet.authorAvatar" />
+                        <div class="leading-tight min-w-0">
+                            <h2 class="truncate" v-html="tweet.authorName"></h2>
+                            <div class="truncate text-sm" v-html="tweet.authorScreenName"></div>
                         </div>
                     </div>
+                    <div>
+                        <div :class="tweet.displayClass" v-html="tweet.html"></div>
+                        <div class="mt-1 text-xs text-dimmed">
+                            <relative-date :moment="tweet.date"></relative-date>
+                            <span v-if="tweet.hasQuote">
+                                In reply to {{ tweet.quote.authorScreenName }}
+                            </span>
+                        </div>
+                    </div>
+                    <img
+                        v-if="tweet.image"
+                        class="max-h-48 mx-auto"
+                        style="objection-fit: cover;"
+                        :src="tweet.image"
+                    />
+                    <div
+                        v-if="tweet.hasQuote"
+                        class="py-2 pl-2 text-xs text-dimmed border-l-2 border-screen"
+                        v-html="tweet.quote.html"
+                    ></div>
                 </div>
-                <div :class="addClassModifiers('tweet__body', tweet.displayClass)"
-                v-html="tweet.html"></div>
-                <div class="tweet__meta">
-                    <relative-date :moment="tweet.date"></relative-date>
-                    <span v-if="tweet.hasQuote" class="tweet__user__handle h-ellipsis">
-                        In reply to {{ tweet.quote.authorScreenName }}
-                    </span>
-                </div>
-                <div v-if="tweet.image" class="tweet__attachment">
-                    <img class="tweet__attachment__image" :src="tweet.image"/>
-                </div>
-                <div v-if="tweet.hasQuote" class="tweet--quoted">
-                    <div class="tweet__body tweet__body--small" v-html="tweet.quote.html"></div>
-                </div>
-            </div>
-        </section>
-        <div class="tweets__icon h-background-icon" v-if="!onDisplay.length">
-        </div>
+            </li>
+        </ul>
     </tile>
 </template>
 
 <script>
 import echo from '../mixins/echo';
+import Avatar from './atoms/Avatar';
 import Tile from './atoms/Tile';
 import RelativeDate from './atoms/RelativeDate';
 import Tweet from '../services/twitter/Tweet';
 import moment from 'moment';
-import { diffInSeconds, addClassModifiers } from '../helpers';
+import { diffInSeconds } from '../helpers';
 
 export default {
     components: {
+        Avatar,
         Tile,
         RelativeDate,
     },
@@ -67,8 +78,6 @@ export default {
     },
 
     methods: {
-        addClassModifiers,
-
         getEventHandlers() {
             return {
                 'Twitter.Mentioned': response => {

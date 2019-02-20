@@ -1,20 +1,23 @@
 <template>
-    <tile v-if="hasFailingUrls" :position="position" modifiers="overflow yellow above">
-        <section class="uptime">
-            <h1 class="uptime__title">Downtime</h1>
-            <ul class="uptime__notifications">
-                <li v-for="failing in failingUrls" class="uptime__notification">
-                    <h2 class="uptime__notification__title h-ellipsis">{{ failing.url }}</h2>
+    <tile v-if="hasFailingUrls" :position="position" class="markup bg-warn">
+        <div
+                class="grid gap-padding h-full markup"
+                style="grid-template-rows: auto 1fr"
+            >
+            <h1>Downtime</h1>
+            <ul class="align-self-center">
+                <li v-for="failing in failingUrls">
+                    <div class="font-bold truncate">{{ failing.url }}</div>
                 </li>
             </ul>
-        </section>
+        </div>
     </tile>
 </template>
 
 <script>
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
-import { addClassModifiers, formatDuration } from '../helpers';
+import { formatDuration } from '../helpers';
 
 export default {
     components: {
@@ -42,8 +45,6 @@ export default {
     },
 
     methods: {
-        addClassModifiers,
-
         getEventHandlers() {
             return {
                 'Uptime.UptimeCheckFailed': response => {

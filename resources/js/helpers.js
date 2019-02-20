@@ -1,4 +1,9 @@
 import moment from 'moment';
+import twemoji from 'twemoji';
+
+export function emoji(character) {
+    return twemoji.parse(character);
+}
 
 export function formatNumber(value) {
     if (!value) {
@@ -8,18 +13,22 @@ export function formatNumber(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-export function addClassModifiers(base, modifiers = []) {
-    if (!Array.isArray(modifiers)) {
-        modifiers = modifiers.split(' ');
-    }
-
-    modifiers = modifiers.map(modifier => `${base}--${modifier}`);
-
-    return [base, ...modifiers];
-}
-
 export function formatDuration(start) {
     return moment.duration(moment().diff(start), 'milliseconds').format('d[d] h[h] m[m]');
+}
+
+export function withinWeek(value) {
+    const date = moment(value);
+
+    if (moment().diff(date, 'days') > -7) {
+        return true;
+    }
+
+    return false;
+}
+
+export function niceFormat(date) {
+    return moment(date).format('MMM Do');
 }
 
 export function relativeDate(value) {
@@ -82,22 +91,14 @@ export function diffInSeconds(otherMoment) {
     return moment().diff(otherMoment, 'seconds');
 }
 
-export function positionToGridAreaNotation(position) {
-    const [from, to = null] = position.toLowerCase().split(':');
-
-    if (from.length < 2 || (to && to.length < 2)) {
-        return;
-    }
-
-    const areaFrom = `${from.substring(1)} / ${indexInAlphabet(from[0])}`;
-    const area = to
-        ? `${areaFrom} / ${Number(to.substring(1)) + 1} / ${indexInAlphabet(to[0]) + 1}`
-        : areaFrom;
-
-    return area;
+export function formatTime(value) {
+    return moment(value, 'X').format('HH:mm');
 }
 
-function indexInAlphabet(character) {
-    const index = character.toLowerCase().charCodeAt(0) - 96;
-    return index < 1 ? 1 : index;
+export function formatDateByTimezone(timezone, dateFormat) {
+    return moment.tz(timezone).format(dateFormat);
+}
+
+export function formatTimeByTimezone(timezone, timeFormat) {
+    return moment.tz(timezone).format(timeFormat);
 }

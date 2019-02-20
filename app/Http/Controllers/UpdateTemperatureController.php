@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Temperature\TemperatureFetched;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use App\Events\TimeWeather\TemperatureFetched;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UpdateTemperatureController
 {
