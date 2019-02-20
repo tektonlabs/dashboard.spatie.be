@@ -14,7 +14,7 @@
             </ul>
             <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == true">
                 <ul class="align-self-center">
-                    <li class="text-sm text-dimmed">No se han encontrado registros</li>
+                    <li class="text-sm text-dimmed">No records found</li>
                 </ul>
             </div>
         </div>
