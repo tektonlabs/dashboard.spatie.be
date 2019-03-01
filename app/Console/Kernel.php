@@ -29,7 +29,6 @@ class Kernel extends ConsoleKernel
         $schedule->command(FetchCalendarEventsCommand::class)->hourly();
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
-        $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
         $schedule->command(FetchTimezones::class)->everyMinute();
         $schedule->command('websockets:clean')->daily();
     }
