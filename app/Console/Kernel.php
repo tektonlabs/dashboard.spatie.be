@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command(FetchLastUpdatedRecords::class)->everyMinute();
         $schedule->command(FetchLastUpdatedDocuments::class)->hourly();
-        $schedule->command(FetchCalendarEventsCommand::class)->daily();
+        $schedule->command(FetchCalendarEventsCommand::class)->hourly();
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
         $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
