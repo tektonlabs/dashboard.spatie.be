@@ -3,14 +3,6 @@
 return [
     'cities' => [
         [
-            'name' => 'Lima',
-            'timezone' => 'America/Lima',
-        ],
-        [
-            'name' => 'Buenos Aires',
-            'timezone' => 'America/Buenos_Aires',
-        ],
-        [
             'name' => 'Los Angeles',
             'timezone' => 'America/Los_Angeles',
         ],
@@ -23,8 +15,16 @@ return [
             'timezone' => 'America/New_York',
         ],
         [
+            'name' => 'Buenos Aires',
+            'timezone' => 'America/Buenos_Aires',
+        ],
+        [
             'name' => 'Toronto',
             'timezone' => 'America/Toronto',
+        ],
+        [
+            'name' => 'Kiev',
+            'timezone' => 'Europe/Kiev',
         ],
     ],
 ];

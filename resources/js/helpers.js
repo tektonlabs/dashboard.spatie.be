@@ -26,6 +26,15 @@ export function withinWeek(value) {
 
     return false;
 }
+export function isToday(value) {
+    const date = moment(value);
+
+    if (moment().isSame(date, 'd')) {
+        return true;
+    }
+
+    return false;
+}
 
 export function niceFormat(date, strFormat = "MMM Do") {
     return moment(date).format(strFormat);

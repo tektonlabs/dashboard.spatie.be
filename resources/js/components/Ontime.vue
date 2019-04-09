@@ -1,20 +1,18 @@
 <template>
     <tile :position="position">
-        <div class="">
-            <h1 class="text-2xl">{{ calendarTitle }}</h1>
-            <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == false">
-                <div v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" >
-                    <h2 class="font-bold text-lg">{{ event.name }}</h2>
+        <h1 class="text-3xl text-center border-b border-grey mb-3 pb-2">{{ calendarTitle }}</h1>
+        <div v-if="isCalendarEmpty == false">
+            <div v-for="event in calendarEvents.events" v-if="relativeDate(event.date) == relativeDate(Date.now())" >
+                <div class="border-b border-dotted pb-3" >
+                    <div class="uppercase text-2xl">{{ event.name }}</div>
                     <ul class="align-self-center">
-                        <li class="text-sm text-dimmed" v-for="attendee in event.attendees">{{ attendee.name }}</li>
+                        <li class="text-xl text-dimmed" v-for="attendee in event.attendees">{{ attendee.name }}</li>
                     </ul>
                 </div>
             </div>
-            <div class="grid gap-padding h-full markup align-self-center" v-if="isCalendarEmpty == true">
-                <ul class="align-self-center">
-                    <li class="text-sm text-dimmed">No hay registros para hoy</li>
-                </ul>
-            </div>
+        </div>
+        <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-if="isCalendarEmpty == true">
+            hmm, there's nothing today
         </div>
     </tile>
 </template>

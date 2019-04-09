@@ -3,6 +3,8 @@
 namespace App\Console\Components\Moody;
 
 use Illuminate\Console\Command;
+use Carbon\Carbon;
+use App\Services\Moody\MoodyApi;
 use App\Events\Moody\LastUpdatedRecords;
 
 class FetchLastUpdatedRecords extends Command
@@ -21,14 +23,9 @@ class FetchLastUpdatedRecords extends Command
      */
     protected $description = 'Fecth moody\'s records';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(MoodyApi $moody)
     {
-        $url = config('moody.url');
-        event(new LastUpdatedRecords($url));
+        $summary = $moody->getDailySummary();
+        event(new LastUpdatedRecords($summary));
     }
 }

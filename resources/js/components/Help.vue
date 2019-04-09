@@ -1,11 +1,11 @@
 <template>
     <tile :position="position" modifiers="overflow">
-        <div class="">
-            <h1 class="text-2xl">HELP, Last updates</h1>
+        <h1 class="text-3xl text-center border-b border-grey mb-3 pb-2">Help<span class="text-xl">, last updates 🗒 </span></h1>
+        <div class="px-3">
             <ul class="align-self-center">
-                <li v-for="documentItem in documents" class="help__documents">
-                    <h2 class="font-bold">{{ documentItem.title }}</h2>
-                    <div class="text-sm text-dimmed">{{documentItem.description}}</div>
+                <li v-for="documentItem in documents" class="mb-4">
+                    <div class="text-xl">{{ documentItem.title }}</div>
+                    <div class="text-lg text-dimmed">{{documentItem.description}}</div>
                 </li>
             </ul>
         </div>
