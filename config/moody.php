@@ -8,5 +8,5 @@ return [
      * If you don't have credentials yet, head over to https://help.tektonlabs.com
      */
 
-    'url' => env('MOODY_URL'),
+    'api_url' => env('MOODY_API'),
 ];

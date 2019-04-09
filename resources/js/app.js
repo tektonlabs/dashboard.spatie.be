@@ -48,7 +48,7 @@ new Vue({
             wsPath: window.dashboard.clientConnectionPath,
             wsPort: 80,
             disableStats: true,
-        }
+        };
 
         if (window.dashboard.environment === 'local') {
             config.wsPort = 6001;

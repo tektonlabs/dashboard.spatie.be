@@ -85,7 +85,7 @@ export default {
                 temperature: '',
                 icons: [],
             },
-            rainForecasts: []
+            rainForecasts: [],
         };
     },
 
