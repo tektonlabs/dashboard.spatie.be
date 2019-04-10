@@ -12,7 +12,7 @@
                     <div class="text-lg text-dimmed" v-if="isToday(event.date) == true" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ relativeDate(event.date) }}</div>
                 </li>
             </ul>
-            <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-if="isCalendarEmpty == true">
+            <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-else>
                 hmm, there's nothing here
             </div>
         </div>
@@ -23,7 +23,7 @@
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
-import { niceFormat, relativeDate, withinWeek, isToday } from '../helpers';
+import { niceFormat, relativeDate, isToday } from '../helpers';
 
 export default {
     components: {
@@ -44,7 +44,6 @@ export default {
     methods: {
         niceFormat,
         relativeDate,
-        withinWeek,
         isToday,
 
         getEventHandlers() {
