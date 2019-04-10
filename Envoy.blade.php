@@ -89,7 +89,6 @@ sudo supervisorctl restart all
 
 @task('display success message', ['on' => 'localhost'])
 echo "application successfully deployed"
->>>>>>> b7a744f50e482ce7e8385d9578f4a4877023d870
 @endtask
 
 @task('generateAssets')
