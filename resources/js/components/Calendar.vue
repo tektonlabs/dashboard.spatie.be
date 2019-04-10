@@ -1,21 +1,19 @@
 <template>
 
     <tile :position="position">
-        <div class="">
-            <h1 class="text-2xl">{{ niceFormat(Date.now(), "MMMM") }} {{ calendarTitle }}</h1>
+        <h1 class="text-3xl text-center border-b border-grey mb-3 pb-2">{{ niceFormat(Date.now(), "MMMM") }} {{ calendarTitle }}</h1>
+        <div class="px-3">
             <ul class="align-self-center" v-if="isCalendarEmpty == false">
-                <li v-for="event in calendarEvents.events">
-                    <h2>{{ niceFormat(event.date) }}</h2>
-                    <div class="text-sm text-dimmed">{{ relativeDate(event.date) }}</div>
+                <li v-for="event in calendarEvents.events" class="mb-3">
                     <ul class="align-self-center">
-                        <li><div :class="{ 'font-bold': withinWeek(event.date) }">{{ event.name }}</div></li>
+                        <li><div class="text-xl" :class="{ 'font-bold text-2xl': isToday(event.date) }">{{ event.name }}</div></li>
                     </ul>
+                    <div class="text-lg text-dimmed" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ niceFormat(event.date) }}</div>
+                    <div class="text-lg text-dimmed" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ relativeDate(event.date) }}</div>
                 </li>
             </ul>
-            <div class="grid gap-padding h-full markup" v-if="isCalendarEmpty == true">
-                <ul class="align-self-center">
-                    <li class="text-sm text-dimmed">No records found</li>
-                </ul>
+            <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-if="isCalendarEmpty == true">
+                hmm, there's nothing here
             </div>
         </div>
     </tile>
@@ -25,7 +23,7 @@
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
-import { niceFormat, relativeDate, withinWeek } from '../helpers';
+import { niceFormat, relativeDate, withinWeek, isToday } from '../helpers';
 
 export default {
     components: {
@@ -47,6 +45,7 @@ export default {
         niceFormat,
         relativeDate,
         withinWeek,
+        isToday,
 
         getEventHandlers() {
             return {

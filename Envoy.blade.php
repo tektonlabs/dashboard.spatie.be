@@ -67,6 +67,29 @@ cd {{ $projectDir }}
 yarn config set ignore-engines true
 yarn --frozen-lockfile
 yarn production
+yarn
+@endtask
+
+@task('generate assets', ['on' => 'web'])
+echo 'generating assets'
+cd '{{ $pathOnServer }}'
+yarn run production
+@endtask
+
+@task('bring app up', ['on' => 'web'])
+cd '{{ $pathOnServer }}'
+echo 'bringing app up'
+php artisan up
+@endtask
+
+@task('reload php', ['on' => 'web'])
+sudo service php7.3-fpm restart
+sudo supervisorctl restart all
+@endtask
+
+@task('display success message', ['on' => 'localhost'])
+echo "application successfully deployed"
+>>>>>>> b7a744f50e482ce7e8385d9578f4a4877023d870
 @endtask
 
 @task('generateAssets')

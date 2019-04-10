@@ -4,8 +4,9 @@
             class="grid gap-2 justify-items-center h-full"
             style="grid-template-rows: auto 1fr auto;"
         >
-            <div class="text-dimmed uppercase">
-                <h1 class="text-xl">{{ date }}</h1>
+            <img :src="src" class="logo" />
+            <div class="text-dimmed uppercase text-center">
+                <h1 class="text-2xl"> {{ date }}</h1>
             </div>
             <div class="align-self-center font-bold text-5xl tracking-wide">
                 {{ time }}
@@ -15,13 +16,12 @@
                     class="grid gap-4 items-center"
                     style="grid-template-columns: repeat(3, auto);"
                 >
-                    <span>
+                    <span class="text-xl">
                         {{ weather.temperature }}°
-                        <span class="text-sm uppercase text-dimmed">out</span>
+                        <span class="uppercase text-dimmed">out</span>
                     </span>
-                    <span v-for="icon in weather.icons" class="text-2xl" v-html="icon"></span>
+                    <span v-for="icon in weather.icons" class="text-3xl" v-html="icon"></span>
                 </div>
-                <div class="hidden">{{ weatherCity }}</div>
             </div>
         </div>
         <div
@@ -75,6 +75,9 @@ export default {
         position: {
             type: String,
         },
+        src: {
+            type: String,
+        }
     },
 
     data() {
@@ -85,7 +88,7 @@ export default {
                 temperature: '',
                 icons: [],
             },
-            rainForecasts: []
+            rainForecasts: [],
         };
     },
 

@@ -23,7 +23,7 @@
     --bg-error-dark: rgb(234, 89, 114);
 
     --tile-spacing: 0.5rem;
-    --tile-padding: 1rem;
+    --tile-padding: 0.5rem;
 }
 
 .dark-mode {
@@ -63,11 +63,11 @@
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
+}
 
-    &:after,
-    &:before {
-        box-sizing: inherit;
-    }
+*:after,
+*:before {
+    box-sizing: inherit;
 }
 
 html {

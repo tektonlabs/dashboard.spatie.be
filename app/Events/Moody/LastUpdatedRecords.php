@@ -6,11 +6,10 @@ use App\Events\DashboardEvent;
 
 class LastUpdatedRecords extends DashboardEvent
 {
-    public $records;
-    public $url;
+    public $summary;
 
-    public function __construct($url)
+    public function __construct($summary)
     {
-        $this->url = $url;
+        $this->summary = $summary;
     }
 }
