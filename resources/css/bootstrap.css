@@ -17,13 +17,15 @@
     --text-invers-dark: rgba(0, 0, 0, 0.9);
     --text-accent-dark: rgb(255, 172, 51);
 
-    --bg-screen-dark: rgb(27, 27, 27);
-    --bg-tile-dark: rgb(39, 39, 39);
+    --bg-screen-dark: rgb(40, 54, 74);
+    --bg-tile-dark: rgb(66, 92, 129);
     --bg-warn-dark: rgb(143, 86, 0);
     --bg-error-dark: rgb(234, 89, 114);
 
     --tile-spacing: 0.5rem;
     --tile-padding: 0.5rem;
+    --bg-logo-url: url('/images/logo.png');
+    --bg-logo-url-dark: url('/images/logo-dark.png');
 }
 
 .dark-mode {
@@ -36,6 +38,7 @@
     --bg-tile: var(--bg-tile-dark);
     --bg-warn: var(--bg-warn-dark);
     --bg-error: var(--bg-error-dark);
+    --bg-logo-url: var(--bg-logo-url-dark);
 }
 
 @media (prefers-color-scheme: dark) {

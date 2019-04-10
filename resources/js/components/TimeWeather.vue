@@ -4,7 +4,7 @@
             class="grid gap-2 justify-items-center h-full"
             style="grid-template-rows: auto 1fr auto;"
         >
-            <img :src="src" class="logo" />
+            <div class="w-24 h-24 bg-logo-url bg-no-repeat bg-contain"></div>
             <div class="text-dimmed uppercase text-center">
                 <h1 class="text-2xl"> {{ date }}</h1>
             </div>

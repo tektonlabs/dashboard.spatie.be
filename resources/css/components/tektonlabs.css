@@ -1,6 +1,5 @@
-.logo {
-    min-height: 4.5rem;
-    height: 6rem;
+.bg-logo-url {
+    background-image: var(--bg-logo-url);
 }
 
 .border-grey {
