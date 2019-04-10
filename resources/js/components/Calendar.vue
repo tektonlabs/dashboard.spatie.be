@@ -8,8 +8,8 @@
                     <ul class="align-self-center">
                         <li><div class="text-xl" :class="{ 'font-bold text-2xl': isToday(event.date) }">{{ event.name }}</div></li>
                     </ul>
-                    <div class="text-lg text-dimmed" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ niceFormat(event.date) }}</div>
-                    <div class="text-lg text-dimmed" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ relativeDate(event.date) }}</div>
+                    <div class="text-lg text-dimmed" v-if="isToday(event.date) == false" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ niceFormat(event.date) }}</div>
+                    <div class="text-lg text-dimmed" v-if="isToday(event.date) == true" :class="{ 'font-bold text-xl': isToday(event.date) }">{{ relativeDate(event.date) }}</div>
                 </li>
             </ul>
             <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-if="isCalendarEmpty == true">

@@ -5,9 +5,7 @@
             style="grid-template-rows: auto 1fr auto;"
         >
             <div class="w-24 h-24 bg-logo-url bg-no-repeat bg-contain"></div>
-            <div class="text-dimmed uppercase text-center">
-                <h1 class="text-2xl"> {{ date }}</h1>
-            </div>
+            <div class="text-dimmed uppercase text-center text-2xl">{{ date }}</div>
             <div class="align-self-center font-bold text-5xl tracking-wide">
                 {{ time }}
             </div>

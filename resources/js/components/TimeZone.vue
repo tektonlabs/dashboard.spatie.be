@@ -3,12 +3,8 @@
         <h1 class="text-3xl text-center border-b border-grey mb-3 pb-2">⏰ World Clock</h1>
         <div class="px-2">
             <ul class="align-self-center" v-for="city in cities">
-                <li class="text-xl mb-3">
-                    <div class="">{{ city.name }}</div>
-                    <time class="text-dimmed">
-                        <span class="">{{ formatDateByTimezone(city.timezone, dateFormat) }}</span> -
-                        <span class="text-2xl">{{ formatTimeByTimezone(city.timezone, timeFormat)  }}</span>
-                    </time>
+                <li class=" mb-3">
+                    <div class="text-lg"> {{ city.name }} - <span class="text-xl text-dimmed">{{ formatTimeByTimezone(city.timezone, timeFormat)  }}</span> </div>
                 </li>
             </ul>
         </div>

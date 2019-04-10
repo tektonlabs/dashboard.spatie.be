@@ -11,6 +11,7 @@
                 </div>
             </div>
         </div>
+
         <div class="grid gap-padding markup text-center align-self-center text-xl text-dimmed" v-if="isCalendarEmpty == true">
             hmm, there's nothing today
         </div>
@@ -22,6 +23,7 @@ import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
 import { relativeDate } from '../helpers';
+import moment from 'moment';
 
 export default {
     components: {
@@ -37,6 +39,7 @@ export default {
             calendarName: "",
             calendarEvents: [],
             attendees: [],
+            hasData: 0,
         };
     },
 

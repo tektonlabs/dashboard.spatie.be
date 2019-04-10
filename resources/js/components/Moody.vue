@@ -2,7 +2,7 @@
     <tile :position="position">
         <h1 class="text-3xl text-center border-b border-grey pb-2">💬 Moody</h1>
         <div class="px-3">
-            <div class="text-2xl text-center py-3">Today's records: {{ summary.total_comments_today }}</div>
+            <div class="text-2xl text-center py-3">Today's records: {{ summary.total_comments_today ? summary.total_comments_today : 0 }}</div>
             <div class="flex text-center pb-10">
                 <div class="w-1/2  flex-col">
                     <div class="text-5xl">😊</div>
