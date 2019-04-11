@@ -39,7 +39,6 @@ class FetchCalendarEventsCommand extends Command
             $allEvents = collect(Event::get($startDate, $endDate, $queryParameters, $calendarId))
                 ->map(function (GoogleCalendarEvent $event) {
                     $sortDate = $event->getSortDate();
-
                     $date =  $event->start->date
                         ? Carbon::createFromFormat('Y-m-d', $event->start->date)
                         : Carbon::parse($event->start->dateTime);
@@ -59,7 +58,6 @@ class FetchCalendarEventsCommand extends Command
                         'name' => $event->name,
                     ];
                 })
-                ->unique('name')
                 ->toArray();
 
             $events[$calendarListItem->getSummary()] = [
