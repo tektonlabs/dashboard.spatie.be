@@ -46,7 +46,7 @@ new Vue({
             key: window.dashboard.pusherKey,
             wsHost: window.location.hostname,
             wsPath: window.dashboard.clientConnectionPath,
-            wsPort: 80,
+            wsPort: 6001,
             disableStats: true,
         };
 
