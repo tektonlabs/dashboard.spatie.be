@@ -12,7 +12,7 @@
         <moody position="a6:b10"></moody>
         <calendar position="d1:d5" calendar-summary="TK Events" calendar-title="Events👯"></calendar>
         <calendar position="e1:e5" calendar-summary="TK Birthdays" calendar-title="Birthdays🎂"></calendar>
-        <internet-connection position="e10:e10"></internet-connection>
+        <internet-connection position="e1:e6"></internet-connection>
         <help position="d6:e10"></help>
     </dashboard>
 </div>
