@@ -5,6 +5,7 @@ import Vue from 'vue';
 
 import Ontime from './components/Ontime';
 import Help from './components/Help';
+import TeamMembers from './components/TeamMembers';
 import Moody from './components/Moody';
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
@@ -38,6 +39,7 @@ new Vue({
         Uptime,
         Velo,
         TileTimer,
+        TeamMembers,
     },
 
     created() {
