@@ -21,49 +21,50 @@ class FetchTeamMembers extends Command
                 'client' => 'Pandero',
                 'members' =>
                 [
-                    'Cristhian',
-                    'Luis',
-                    'Marlon',
-                    'Santiago',
+                    'Cristhian V.',
+                    'Luis C.',
+                    'Marlon M.',
+                    'Santiago G.',
                 ],
             ],
             [
                 'client' => 'Pacasmayo',
                 'members' =>
                 [
-                    'Alex',
-                    'Eduardo',
-                    'Jordano',
-                    'Mario',
+                    'Alex J.',
+                    'Eduardo G.',
+                    'Jordano M.',
+                    'Karla A.',
+                    'Mario C.',
                 ],
             ],
             [
                 'client' => 'Culqi',
                 'members' =>
                 [
-                    'Atilio',
-                    'Joca',
-                    'Karla',
-                    'Kevin',
-                    'William',
+                    'Atilio O.',
+                    'Joca P.',
+                    'Kerly C.',
+                    'Kevin A.',
+                    'Willian C.',
                 ],
             ],
             [
                 'client' => 'DELOSI',
                 'members' =>
                 [
-                    'Kerly',
-                    'Renee',
-                    'Stywar',
-                    'Harrison',
+                    'Harrison C.',
+                    'Renee O.',
+                    'Stywar V.',
+                    'Yaritza R.',
                 ],
             ],
             [
                 'client' => 'Mi Banco',
                 'members' =>
                 [
-                    'Steven',
-                    'Maggie',
+                    'Maggie E.',
+                    'Steven T.',
                 ],
             ],
         ];
