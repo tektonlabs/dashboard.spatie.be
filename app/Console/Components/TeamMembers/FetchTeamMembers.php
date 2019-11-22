@@ -53,6 +53,7 @@ class FetchTeamMembers extends Command
                 'client' => 'DELOSI',
                 'members' =>
                 [
+                    'Christian M.',
                     'Harrison C.',
                     'Renee O.',
                     'Stywar V.',
