@@ -4,13 +4,10 @@ namespace App\Console\Components\TeamMembers;
 
 use App\Events\TeamMembers\MembersFetched;
 use Illuminate\Console\Command;
-use Google_Client;
-use Google_Service_Sheets;
-use Google_Service_Drive;
 
-class FetchTeamMembers extends Command
+class FetchTeamMembersPlain extends Command
 {
-    protected $signature = 'dashboard:fetch-team-members';
+    protected $signature = 'dashboard:fetch-team-members-plain';
 
     protected $description = 'Fetch events from a Google Calendar';
 
@@ -23,7 +20,6 @@ class FetchTeamMembers extends Command
                 [
                     'Cristhian V.',
                     'Luis C.',
-                    'Marlon M.',
                     'Santiago G.',
                 ],
             ],
@@ -34,19 +30,9 @@ class FetchTeamMembers extends Command
                     'Alex J.',
                     'Eduardo G.',
                     'Jordano M.',
+                    'Juanjo R.',
                     'Karla A.',
-                    'Mario C.',
-                ],
-            ],
-            [
-                'client' => 'Culqi',
-                'members' =>
-                [
-                    'Atilio O.',
-                    'Joca P.',
-                    'Kerly C.',
-                    'Kevin A.',
-                    'Willian C.',
+                    'William C.',
                 ],
             ],
             [
@@ -54,25 +40,15 @@ class FetchTeamMembers extends Command
                 'members' =>
                 [
                     'Christian M.',
-                    'Harrison C.',
-                    'Renee O.',
                     'Stywar V.',
+                    'Renee O.',
                     'Yaritza R.',
-                ],
-            ],
-            [
-                'client' => 'Mi Banco',
-                'members' =>
-                [
-                    'Maggie E.',
-                    'Steven T.',
                 ],
             ],
         ];
 
         $values = $response;
         $this->info('Fetching team members events...');
-
         event(new MembersFetched($values));
 
         $this->info('All done!');

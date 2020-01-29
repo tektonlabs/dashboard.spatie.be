@@ -7,28 +7,25 @@ use Google_Client;
 use Google_Service_Sheets;
 use Google_Service_Drive;
 
-class FetchTeamMembers extends Command
+class FetchTeamMembersFromSpreadsheet extends Command
 {
-    protected $signature = 'dashboard:fetch-team-members';
+    protected $signature = 'dashboard:fetch-team-members-from-spreadsheet';
 
     protected $description = 'Fetch events from a Google Calendar';
 
     public function handle()
     {
-        // dd(json_decode(file_get_contents(config('google-calendar.service_account_credentials_json'))));
-        // $config = json_decode(file_get_contents(config('google-calendar.service_account_credentials_json')));
-
         $client = $this->getClient();
-        $service = new Google_Service_Sheets($client);
-        $spreadsheetId = '1jKl8hpx-lAx48qDNcAuIIGZCfufkhkNQU64A3MITw0Y';
-        $range = 'Sheet1!A2:B1000';
-        $queryParameters = [
-            'majorDimension' => 'COLUMNS',
-        ];
-        $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+        // $service = new Google_Service_Sheets($client);
+        // $spreadsheetId = config('services.team-members.spreadsheet_id');
+        // $range = 'Sheet1!A2:B1000';
+        // $queryParameters = [
+        //     'majorDimension' => 'COLUMNS',
+        // ];
+        // $response = $service->spreadsheets_values->get($spreadsheetId, $range);
         // $values = $response;
         // $this->info('Fetching team members events...');
-        dd($response);
+        dd($client);
 
         // $calendarId = $calendarId ?? config('google-calendar.calendar_id');
         // $calendarService = GoogleCalendarFactory::createForCalendarId($calendarId)->getService();
