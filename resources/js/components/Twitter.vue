@@ -37,6 +37,7 @@ import RelativeDate from './atoms/RelativeDate';
 import Tweet from '../services/twitter/Tweet';
 import moment from 'moment';
 import { diffInSeconds } from '../helpers';
+import uniqBy from 'lodash/uniqBy';
 
 export default {
     components: {
@@ -102,8 +103,12 @@ export default {
 
     computed: {
         onDisplay() {
-            return this.tweets.filter(tweet => {
+            let filteredTweets = this.tweets.filter(tweet => {
                 return tweet.authorScreenName !== this.ownScreenName && !tweet.isRetweet;
+            });
+
+            return uniqBy(filteredTweets, (tweet) => {
+                return tweet.tweetProperties.id;
             });
         },
     },

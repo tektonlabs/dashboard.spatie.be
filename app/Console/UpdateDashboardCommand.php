@@ -17,6 +17,6 @@ class UpdateDashboardCommand extends Command
         $this->call('dashboard:fetch-calendar-events');
         $this->call('dashboard:fetch-timezones');
         $this->call('dashboard:fetch-last-documents');
-        $this->call('dashboard:update-moody');
+        $this->call('dashboard:fetch-team-members');
     }
 }
