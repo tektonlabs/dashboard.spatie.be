@@ -32,7 +32,7 @@ class FetchTeamMembersPlain extends Command
                     'Jordano M.',
                     'Juanjo R.',
                     'Karla A.',
-                    'William C.',
+                    'Willian C.',
                 ],
             ],
             [
