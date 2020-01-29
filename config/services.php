@@ -86,5 +86,8 @@ return [
     'velo' => [
         'stations' => explode(',', env('VELO_STATIONS')),
     ],
+    'team-members' => [
+        'spreadsheet_id' => env('TEAM_MEMBERS_SPREADSHEET_ID', ''),
+    ]
 
 ];
