@@ -10,13 +10,14 @@ use App\Console\Components\Dashboard\SendHeartbeatCommand;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Components\Calendar\FetchCalendarEventsCommand;
 use App\Console\Components\Dashboard\DetermineAppearanceCommand;
+use App\Console\Components\TeamMembers\FetchTeamMembersFromSpreadsheet;
 
 class Kernel extends ConsoleKernel
 {
 
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(FetchTeamMembersPlain::class)->daily();
+        $schedule->command(FetchTeamMembersFromSpreadsheet::class)->hourly();
         $schedule->command(FetchLastUpdatedDocuments::class)->hourly();
         $schedule->command(FetchCalendarEventsCommand::class)->hourly();
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();

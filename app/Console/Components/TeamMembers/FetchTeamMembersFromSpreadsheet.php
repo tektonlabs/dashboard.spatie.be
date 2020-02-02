@@ -2,6 +2,7 @@
 
 namespace App\Console\Components\TeamMembers;
 
+use App\Events\TeamMembers\MembersFetched;
 use Illuminate\Console\Command;
 use Google_Client;
 use Google_Service_Sheets;
@@ -16,7 +17,21 @@ class FetchTeamMembersFromSpreadsheet extends Command
     {
         $reader = $this->getSpreadsheetService();
         $spreadsheetId = config('services.team-members.spreadsheet_id');
-        dd($reader->spreadsheets_values->get($spreadsheetId, 'Data!B2:D9'));
+        $collaborators = collect($reader->spreadsheets_values->get($spreadsheetId, 'Data'));
+        $clients = $collaborators->shift();
+        $members = collect($clients)->map(function($client) {
+            return ['client' => $client];
+        })->toArray();
+        $collaborators->each(function($row) use(&$members) {
+            foreach($row as $index => $value) {
+                if($value !== "") {
+                    $members[$index]['members'][] = $value;
+                }
+            }
+        });
+
+        $this->info('Fetching team members events...');
+        event(new MembersFetched($members));
         $this->info('All done!');
     }
 
